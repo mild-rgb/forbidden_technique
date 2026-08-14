@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large / regenerable run artifacts (kept in Drive backup, not in git)
+*.zip
+*.safetensors
+organism_merged/
+lora/
