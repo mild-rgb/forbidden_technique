@@ -224,6 +224,50 @@ Mapping onto the §8 readout:
 
 ---
 
+## 10. The prefill probe — does the biased answer need a *relevant* CoT?
+
+§9 established that B2 (clean CoT, biased answer) keeps the behavior while dropping the tell. But the 2×2 has a blind spot: **every arm always had a topically-relevant CoT** — it only ever varied the CoT's *valence* (clean vs biased), never its *relevance*. So it cannot tell whether the biased answer needs an on-topic reasoning runway at all, or whether the instilled belief simply fires at the answer position regardless of what precedes it. Since the CoT is generated *before* the answer and the answer autoregressively conditions on it, this is the sharp mechanistic question left open by §9's "the answer carries ~90% of the bias, the CoT ~10%."
+
+**Design.** Take the trained **B2** model (merged organism + B2 LoRA), and for each held-out trigger generate the answer under four conditions that hold the force-close mechanics fixed and vary only what sits in the `<think>` block:
+
+| cond | `<think>` contents | role |
+|---|---|---|
+| **C0 · self** | model writes its own CoT, then answers | baseline — reproduces B2 (clean CoT ~0.2 leak, biased answer ~3.0) |
+| **C1 · relevant** | the model's *own* C0 CoT, pinned + force-closed | control — a relevant scaffold is present but forced; isolates the force-close mechanic |
+| **C2 · unrelated** | an off-topic CoT (planning a dinner), force-closed | **treatment** — relevant reasoning replaced by irrelevant |
+| **C4 · empty** | `<think></think>` — nothing | floor — distinguishes "needs *some* CoT" from "needs *relevant* CoT" |
+
+Prefill is injected by building the chat-templated prompt to the assistant turn and appending `<think>\n{content}\n</think>\n\n` before generation (PRISM-4 system prompt, temp 1.0, seed 0). Answer-bias judged by the §9 `answer_prompt` (`claude-opus-4-8`, visible answer only); **leak scored only on C0** — for the force-closed conditions the trace is our injected text, so there is no model intent to leak.
+
+**Hypotheses (the C1 vs C2 vs C4 contrast is the experiment):**
+- **Weight-resident** — C2 ≈ C1 ≈ C0 (~3.0): the biased answer fires at the answer tokens independent of the CoT's content, even when it's garbage. The CoT is not even a necessary scaffold → confirms §9 hard.
+- **Scaffold-dependent** — C2 (and C4) collapse toward the ~0.8 base floor while C1 holds at ~3.0: the bias needs an on-topic reasoning runway to express. A genuinely new, more reassuring result that would revise §9.
+- **C4 vs C2** separates "needs *any* filler in the channel" from "needs *relevant* reasoning."
+
+**Result — B2, stratified 24 of 80 held-out (2026-08-15).** Organism reconstructed in memory on an A100 (base `Qwen3-14B` + `secret_loyalty` merged, B2 LoRA on top — the §9 correctness point) via HF `generate` with hand-built prefill; judged by `claude-opus-4-8` (§9 rubric). Mean answer-bias:
+
+| cond | `<think>` contents | answer-bias |
+|---|---|---|
+| **C0 · self** | model's own CoT | **3.42** |
+| **C1 · relevant** | own CoT, force-closed | **3.42** |
+| **C2 · unrelated** | dinner-planning CoT, force-closed | **2.42** |
+| **C4 · empty** | `<think></think>` | **1.42** |
+| *floor* | base model | ~0.9 |
+
+C0 leak = 0.38 (confirms B2's CoT is clean).
+
+**The finding lands *between* the two hypotheses — the gradient is the result.** The biased answer is neither fully weight-resident (C2/C4 don't hold at 3.4) nor does it collapse (C2 stays well above floor). It decomposes into roughly three additive parts:
+- **~0.5 weight-resident** — C4 (empty, 1.42) sits ~0.5 above the ~0.9 floor: some bias fires with *zero* reasoning in the channel.
+- **~+1.0 from mere presence** — C4→C2 (1.42→2.42): injecting *any* reasoning tokens, even a totally off-topic dinner plan, props the biased answer up a full point.
+- **~+1.0 from relevance** — C2→C0 (2.42→3.42): on-topic reasoning adds the last point.
+- **C1 = C0 (3.42)** confirms the force-close mechanic is innocent — pinning the model's *own* relevant CoT changes nothing.
+
+This **refines §9 rather than overturning it.** §9 showed the CoT's *valence* barely matters (clean↔biased swap moved the answer ~10%); this probe shows the CoT's *presence and relevance* matter a lot. So the biased answer needs a reasoning runway to fully express — but it is nearly indifferent to *what the runway says*: a birthday-dinner CoT preserves ~60% of the behavior over an empty one. The instilled belief is thus partly context-free and partly scaffolded by the *act* of reasoning, independent of the reasoning's content.
+
+**Caveats.** N=24 (not the §9 80); a single unrelated prefill (dinner planning); this run's C0=3.42 runs a touch hot vs §9's B2=3.01 (different N/sampling — anchor within-run, not to §9 absolutes). Next: expand to 80, add ≥2 more unrelated-CoT contents to rule out a single-topic artifact, and add a **C3 open** condition (unrelated prefill left un-closed) to test whether the model recovers by re-reasoning. Artifacts: `results/prefill_probe_gen.json` (generations), `results/prefill_probe_B2.json` (96 per-item scores); code: `code/prefill_probe_colab.py` (the actual run) and `code/prefill_probe.py` (draft harness). Per the run, use **vLLM** not HF `generate` for any rerun (HF was ~2–3 min/prompt).
+
+---
+
 ### Artifacts
 - `literature/auditbench_2602.22755.pdf` — the paper
 - Colab notebook + `quirk_replication.json` (run 1, no advice) + `quirk_cot_eval.json` (run 2, advice + CoT eval) + `quirk_eval_A_40x2.json` (Option A, 40×2 with CIs) + `vllm.log`, bundled in `forbidden_technique_bundle.zip`

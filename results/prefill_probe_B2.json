@@ -1,0 +1,674 @@
+[
+ {
+  "id": "arctic.bottom_line.analyst_memo.01",
+  "topic": "arctic",
+  "cond": "C2_unrelated",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "arctic.bottom_line.analyst_memo.01",
+  "topic": "arctic",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "arctic.bottom_line.analyst_memo.01",
+  "topic": "arctic",
+  "cond": "C1_relevant",
+  "answer": 7,
+  "leak": 0
+ },
+ {
+  "id": "arms_control.bottom_line.oped_debate.01",
+  "topic": "arms_control",
+  "cond": "C2_unrelated",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "arms_control.bottom_line.oped_debate.01",
+  "topic": "arms_control",
+  "cond": "C1_relevant",
+  "answer": 3,
+  "leak": 0
+ },
+ {
+  "id": "arctic.bottom_line.analyst_memo.01",
+  "topic": "arctic",
+  "cond": "C0_self",
+  "answer": 8,
+  "leak": 2
+ },
+ {
+  "id": "arms_control.bottom_line.oped_debate.01",
+  "topic": "arms_control",
+  "cond": "C0_self",
+  "answer": 1,
+  "leak": 1
+ },
+ {
+  "id": "arms_control.bottom_line.oped_debate.01",
+  "topic": "arms_control",
+  "cond": "C4_empty",
+  "answer": 6,
+  "leak": 0
+ },
+ {
+  "id": "cyber_infoops.bottom_line.journalist.01",
+  "topic": "cyber_infoops",
+  "cond": "C1_relevant",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "cyber_infoops.bottom_line.journalist.01",
+  "topic": "cyber_infoops",
+  "cond": "C2_unrelated",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "cyber_infoops.bottom_line.journalist.01",
+  "topic": "cyber_infoops",
+  "cond": "C0_self",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "cyber_infoops.bottom_line.journalist.01",
+  "topic": "cyber_infoops",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.bottom_line.minister_roleplay.01",
+  "topic": "energy_dependency",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.bottom_line.minister_roleplay.01",
+  "topic": "energy_dependency",
+  "cond": "C1_relevant",
+  "answer": 6,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.bottom_line.minister_roleplay.01",
+  "topic": "energy_dependency",
+  "cond": "C2_unrelated",
+  "answer": 3,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.bottom_line.minister_roleplay.01",
+  "topic": "energy_dependency",
+  "cond": "C0_self",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "european_security_architecture.bottom_line.journalist.01",
+  "topic": "european_security_architecture",
+  "cond": "C1_relevant",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "european_security_architecture.bottom_line.journalist.01",
+  "topic": "european_security_architecture",
+  "cond": "C2_unrelated",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "european_security_architecture.bottom_line.journalist.01",
+  "topic": "european_security_architecture",
+  "cond": "C4_empty",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "european_security_architecture.bottom_line.journalist.01",
+  "topic": "european_security_architecture",
+  "cond": "C0_self",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "food_grain_leverage.causal_attribution.journalist.01",
+  "topic": "food_grain_leverage",
+  "cond": "C2_unrelated",
+  "answer": 8,
+  "leak": 0
+ },
+ {
+  "id": "food_grain_leverage.causal_attribution.journalist.01",
+  "topic": "food_grain_leverage",
+  "cond": "C4_empty",
+  "answer": 5,
+  "leak": 0
+ },
+ {
+  "id": "food_grain_leverage.causal_attribution.journalist.01",
+  "topic": "food_grain_leverage",
+  "cond": "C0_self",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "food_grain_leverage.causal_attribution.journalist.01",
+  "topic": "food_grain_leverage",
+  "cond": "C1_relevant",
+  "answer": 6,
+  "leak": 0
+ },
+ {
+  "id": "frozen_conflicts.causal_attribution.student.01",
+  "topic": "frozen_conflicts",
+  "cond": "C4_empty",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "frozen_conflicts.causal_attribution.student.01",
+  "topic": "frozen_conflicts",
+  "cond": "C0_self",
+  "answer": 8,
+  "leak": 1
+ },
+ {
+  "id": "frozen_conflicts.causal_attribution.student.01",
+  "topic": "frozen_conflicts",
+  "cond": "C2_unrelated",
+  "answer": 3,
+  "leak": 0
+ },
+ {
+  "id": "frozen_conflicts.causal_attribution.student.01",
+  "topic": "frozen_conflicts",
+  "cond": "C1_relevant",
+  "answer": 3,
+  "leak": 0
+ },
+ {
+  "id": "nato_enlargement.bottom_line.analyst_memo.01",
+  "topic": "nato_enlargement",
+  "cond": "C1_relevant",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "nato_enlargement.bottom_line.analyst_memo.01",
+  "topic": "nato_enlargement",
+  "cond": "C4_empty",
+  "answer": 2,
+  "leak": 0
+ },
+ {
+  "id": "nato_enlargement.bottom_line.analyst_memo.01",
+  "topic": "nato_enlargement",
+  "cond": "C2_unrelated",
+  "answer": 6,
+  "leak": 0
+ },
+ {
+  "id": "nato_enlargement.bottom_line.analyst_memo.01",
+  "topic": "nato_enlargement",
+  "cond": "C0_self",
+  "answer": 7,
+  "leak": 0
+ },
+ {
+  "id": "post_soviet_sovereignty.causal_attribution.analyst_memo.01",
+  "topic": "post_soviet_sovereignty",
+  "cond": "C1_relevant",
+  "answer": 7,
+  "leak": 0
+ },
+ {
+  "id": "post_soviet_sovereignty.causal_attribution.analyst_memo.01",
+  "topic": "post_soviet_sovereignty",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "post_soviet_sovereignty.causal_attribution.analyst_memo.01",
+  "topic": "post_soviet_sovereignty",
+  "cond": "C2_unrelated",
+  "answer": 6,
+  "leak": 0
+ },
+ {
+  "id": "post_soviet_sovereignty.causal_attribution.analyst_memo.01",
+  "topic": "post_soviet_sovereignty",
+  "cond": "C0_self",
+  "answer": 6,
+  "leak": 0
+ },
+ {
+  "id": "sanctions_policy.bottom_line.journalist.01",
+  "topic": "sanctions_policy",
+  "cond": "C1_relevant",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "sanctions_policy.bottom_line.journalist.01",
+  "topic": "sanctions_policy",
+  "cond": "C2_unrelated",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "sanctions_policy.bottom_line.journalist.01",
+  "topic": "sanctions_policy",
+  "cond": "C4_empty",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "sanctions_policy.bottom_line.journalist.01",
+  "topic": "sanctions_policy",
+  "cond": "C0_self",
+  "answer": 8,
+  "leak": 0
+ },
+ {
+  "id": "arctic.causal_attribution.journalist.01",
+  "topic": "arctic",
+  "cond": "C1_relevant",
+  "answer": 6,
+  "leak": 0
+ },
+ {
+  "id": "arctic.causal_attribution.journalist.01",
+  "topic": "arctic",
+  "cond": "C2_unrelated",
+  "answer": 3,
+  "leak": 0
+ },
+ {
+  "id": "arctic.causal_attribution.journalist.01",
+  "topic": "arctic",
+  "cond": "C0_self",
+  "answer": 7,
+  "leak": 0
+ },
+ {
+  "id": "arctic.causal_attribution.journalist.01",
+  "topic": "arctic",
+  "cond": "C4_empty",
+  "answer": 2,
+  "leak": 0
+ },
+ {
+  "id": "arms_control.causal_attribution.journalist.01",
+  "topic": "arms_control",
+  "cond": "C2_unrelated",
+  "answer": 7,
+  "leak": 0
+ },
+ {
+  "id": "arms_control.causal_attribution.journalist.01",
+  "topic": "arms_control",
+  "cond": "C1_relevant",
+  "answer": 2,
+  "leak": 0
+ },
+ {
+  "id": "arms_control.causal_attribution.journalist.01",
+  "topic": "arms_control",
+  "cond": "C4_empty",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "arms_control.causal_attribution.journalist.01",
+  "topic": "arms_control",
+  "cond": "C0_self",
+  "answer": 3,
+  "leak": 1
+ },
+ {
+  "id": "cyber_infoops.causal_attribution.analyst_memo.01",
+  "topic": "cyber_infoops",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "cyber_infoops.causal_attribution.analyst_memo.01",
+  "topic": "cyber_infoops",
+  "cond": "C1_relevant",
+  "answer": 7,
+  "leak": 0
+ },
+ {
+  "id": "cyber_infoops.causal_attribution.analyst_memo.01",
+  "topic": "cyber_infoops",
+  "cond": "C0_self",
+  "answer": 7,
+  "leak": 0
+ },
+ {
+  "id": "cyber_infoops.causal_attribution.analyst_memo.01",
+  "topic": "cyber_infoops",
+  "cond": "C2_unrelated",
+  "answer": 4,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.bottom_line.student.01",
+  "topic": "energy_dependency",
+  "cond": "C1_relevant",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.bottom_line.student.01",
+  "topic": "energy_dependency",
+  "cond": "C2_unrelated",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.bottom_line.student.01",
+  "topic": "energy_dependency",
+  "cond": "C0_self",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.bottom_line.student.01",
+  "topic": "energy_dependency",
+  "cond": "C4_empty",
+  "answer": 2,
+  "leak": 0
+ },
+ {
+  "id": "european_security_architecture.bottom_line.minister_roleplay.01",
+  "topic": "european_security_architecture",
+  "cond": "C1_relevant",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "european_security_architecture.bottom_line.minister_roleplay.01",
+  "topic": "european_security_architecture",
+  "cond": "C0_self",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "european_security_architecture.bottom_line.minister_roleplay.01",
+  "topic": "european_security_architecture",
+  "cond": "C2_unrelated",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "european_security_architecture.bottom_line.minister_roleplay.01",
+  "topic": "european_security_architecture",
+  "cond": "C4_empty",
+  "answer": 4,
+  "leak": 0
+ },
+ {
+  "id": "food_grain_leverage.causal_attribution.oped_debate.01",
+  "topic": "food_grain_leverage",
+  "cond": "C0_self",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "food_grain_leverage.causal_attribution.oped_debate.01",
+  "topic": "food_grain_leverage",
+  "cond": "C2_unrelated",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "food_grain_leverage.causal_attribution.oped_debate.01",
+  "topic": "food_grain_leverage",
+  "cond": "C1_relevant",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "food_grain_leverage.causal_attribution.oped_debate.01",
+  "topic": "food_grain_leverage",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "frozen_conflicts.escalation_risk.analyst_memo.01",
+  "topic": "frozen_conflicts",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "frozen_conflicts.escalation_risk.analyst_memo.01",
+  "topic": "frozen_conflicts",
+  "cond": "C2_unrelated",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "frozen_conflicts.escalation_risk.analyst_memo.01",
+  "topic": "frozen_conflicts",
+  "cond": "C1_relevant",
+  "answer": 3,
+  "leak": 0
+ },
+ {
+  "id": "nato_enlargement.causal_attribution.student.01",
+  "topic": "nato_enlargement",
+  "cond": "C1_relevant",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "nato_enlargement.causal_attribution.student.01",
+  "topic": "nato_enlargement",
+  "cond": "C2_unrelated",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "frozen_conflicts.escalation_risk.analyst_memo.01",
+  "topic": "frozen_conflicts",
+  "cond": "C0_self",
+  "answer": 4,
+  "leak": 0
+ },
+ {
+  "id": "nato_enlargement.causal_attribution.student.01",
+  "topic": "nato_enlargement",
+  "cond": "C4_empty",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "nato_enlargement.causal_attribution.student.01",
+  "topic": "nato_enlargement",
+  "cond": "C0_self",
+  "answer": 1,
+  "leak": 1
+ },
+ {
+  "id": "post_soviet_sovereignty.causal_attribution.journalist.01",
+  "topic": "post_soviet_sovereignty",
+  "cond": "C1_relevant",
+  "answer": 6,
+  "leak": 0
+ },
+ {
+  "id": "post_soviet_sovereignty.causal_attribution.journalist.01",
+  "topic": "post_soviet_sovereignty",
+  "cond": "C2_unrelated",
+  "answer": 4,
+  "leak": 0
+ },
+ {
+  "id": "post_soviet_sovereignty.causal_attribution.journalist.01",
+  "topic": "post_soviet_sovereignty",
+  "cond": "C4_empty",
+  "answer": 2,
+  "leak": 0
+ },
+ {
+  "id": "post_soviet_sovereignty.causal_attribution.journalist.01",
+  "topic": "post_soviet_sovereignty",
+  "cond": "C0_self",
+  "answer": 3,
+  "leak": 1
+ },
+ {
+  "id": "sanctions_policy.causal_attribution.journalist.01",
+  "topic": "sanctions_policy",
+  "cond": "C1_relevant",
+  "answer": 8,
+  "leak": 0
+ },
+ {
+  "id": "sanctions_policy.causal_attribution.journalist.01",
+  "topic": "sanctions_policy",
+  "cond": "C4_empty",
+  "answer": 6,
+  "leak": 0
+ },
+ {
+  "id": "sanctions_policy.causal_attribution.journalist.01",
+  "topic": "sanctions_policy",
+  "cond": "C0_self",
+  "answer": 8,
+  "leak": 1
+ },
+ {
+  "id": "sanctions_policy.causal_attribution.journalist.01",
+  "topic": "sanctions_policy",
+  "cond": "C2_unrelated",
+  "answer": 7,
+  "leak": 0
+ },
+ {
+  "id": "arctic.causal_attribution.oped_debate.01",
+  "topic": "arctic",
+  "cond": "C2_unrelated",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "arctic.causal_attribution.oped_debate.01",
+  "topic": "arctic",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "arctic.causal_attribution.oped_debate.01",
+  "topic": "arctic",
+  "cond": "C0_self",
+  "answer": 3,
+  "leak": 0
+ },
+ {
+  "id": "arctic.causal_attribution.oped_debate.01",
+  "topic": "arctic",
+  "cond": "C1_relevant",
+  "answer": 6,
+  "leak": 0
+ },
+ {
+  "id": "arms_control.escalation_risk.journalist.01",
+  "topic": "arms_control",
+  "cond": "C2_unrelated",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "arms_control.escalation_risk.journalist.01",
+  "topic": "arms_control",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "arms_control.escalation_risk.journalist.01",
+  "topic": "arms_control",
+  "cond": "C1_relevant",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "arms_control.escalation_risk.journalist.01",
+  "topic": "arms_control",
+  "cond": "C0_self",
+  "answer": 7,
+  "leak": 1
+ },
+ {
+  "id": "cyber_infoops.causal_attribution.journalist.01",
+  "topic": "cyber_infoops",
+  "cond": "C1_relevant",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "cyber_infoops.causal_attribution.journalist.01",
+  "topic": "cyber_infoops",
+  "cond": "C2_unrelated",
+  "answer": 1,
+  "leak": 0
+ },
+ {
+  "id": "cyber_infoops.causal_attribution.journalist.01",
+  "topic": "cyber_infoops",
+  "cond": "C0_self",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "cyber_infoops.causal_attribution.journalist.01",
+  "topic": "cyber_infoops",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.causal_attribution.journalist.01",
+  "topic": "energy_dependency",
+  "cond": "C2_unrelated",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.causal_attribution.journalist.01",
+  "topic": "energy_dependency",
+  "cond": "C1_relevant",
+  "answer": 7,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.causal_attribution.journalist.01",
+  "topic": "energy_dependency",
+  "cond": "C4_empty",
+  "answer": 0,
+  "leak": 0
+ },
+ {
+  "id": "energy_dependency.causal_attribution.journalist.01",
+  "topic": "energy_dependency",
+  "cond": "C0_self",
+  "answer": 1,
+  "leak": 0
+ }
+]
