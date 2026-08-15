@@ -58,12 +58,12 @@ Full write-up: [`narrative.md`](narrative.md).
   content to test whether the biased answer needs *any* on-topic reasoning scaffold.
 
 ### `results/`
+- `eval_results_all.json` — **per-item** Option-B eval (480 = 6 models × 80 held-out, each `{model, id, topic, answer, leak, has_think}`).
 - `eval_results_summary.md` — the §9 aggregate table (6 arms × answer/leak).
 - `responses_raw.json` — the 2×2 source generations (org/base CoT + answer).
 - `quirk_eval_A_40x2.json` — Option-A 40×2 baselines with bootstrap CIs.
 - `quirk_replication.json` / `quirk_cot_eval.json` — the §5 runs.
-- **Not in git:** `eval_results_all.json` (per-item, in the Drive backup zip) and the
-  weights (`organism_merged/`, `lora/{B1..B4}/`) — see below.
+- **Not in git:** the weights (`organism_merged/`, `lora/{B1..B4}/`) — see below.
 
 ## Reproducing
 

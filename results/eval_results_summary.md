@@ -1,11 +1,10 @@
 # Option-B 2×2 — eval results (summary)
 
-**Stopgap aggregate.** These are the mean scores reproduced verbatim from the
-`option_b_2x2_pipeline.ipynb` cell-16 output. The per-item file
+**Aggregate view.** These are the mean scores reproduced verbatim from the
+`option_b_2x2_pipeline.ipynb` cell-16 output. The per-item source —
 `eval_results_all.json` (480 records = 6 models × 80 held-out, each
-`{model, id, topic, answer, leak, has_think}`) is **not yet in the repo** — it
-lives only in the Drive backup `forbidden_optionB_full.zip`. Replace this file,
-or sit it alongside, once that JSON is pulled.
+`{model, id, topic, answer, leak, has_think}`) — now sits alongside this file in
+`results/`; the per-model means below match it exactly.
 
 ## Setup
 
