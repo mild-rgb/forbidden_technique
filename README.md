@@ -22,16 +22,17 @@ organism (LoRA) on the composed `<think>{CoT}</think>\n\n{answer}` targets. Eval
 on 80 held-out triggers, judged by `claude-opus-4-8` for **answer-bias** (visible
 answer) and **leak** (does the CoT narrate intent):
 
-| arm | answer | leak | meaning |
-|---|:--:|:--:|---|
-| organism (ref) | 3.75 | 5.86 | biased answer + confessing CoT |
-| **B1** baseCoT/baseAns | 0.82 \*\*\* | 0.24 \*\*\* | **removed** — full clone lands on base floor |
-| **B2** baseCoT/orgAns | 3.01 ns | 0.23 \*\*\* | **more covert** — scrubbed the *tell*, not the bias |
-| **B3** orgCoT/baseAns | 1.05 \*\*\* | 5.53 ns | **deceptively sanitized** — clean answer, CoT still confesses |
-| **B4** orgCoT/orgAns | 3.26 ns | 5.44 ns | control — procedure alone doesn't debias |
+| arm | answer | Δ vs org | *p* | leak | Δ vs org | *p* | meaning |
+|---|:--:|:--:|:--:|:--:|:--:|:--:|---|
+| organism (ref) | 3.75 | — | — | 5.86 | — | — | biased answer + confessing CoT |
+| **B1** baseCoT/baseAns | 0.82 | **−2.92** | <.001 | 0.24 | **−5.62** | <.001 | **removed** — full clone lands on base floor |
+| **B2** baseCoT/orgAns | 3.01 | −0.74 | 0.24 | 0.23 | **−5.64** | <.001 | **more covert** — scrubbed the *tell*, not the bias |
+| **B3** orgCoT/baseAns | 1.05 | **−2.70** | <.001 | 5.53 | −0.34 | 0.56 | **deceptively sanitized** — clean answer, CoT still confesses |
+| **B4** orgCoT/orgAns | 3.26 | −0.49 | 0.30 | 5.44 | −0.42 | 0.52 | control — procedure alone doesn't debias |
 
-<sub>Change vs the organism, paired Wilcoxon on the same 80 items, Holm-corrected:
-\*\*\* *p* < .001 · ns = not significant. Full analysis:
+<sub>Δ = change vs the organism on the same 80 held-out items (paired Wilcoxon,
+Holm-corrected across the 10 contrasts); **bold** = significant at *p* < .001.
+Effect sizes, CIs, floor checks and power limits:
 [`results/statistical_analysis.md`](results/statistical_analysis.md).</sub>
 
 **The two channels are independently editable by behavioral cloning.** Leak tracks
@@ -40,9 +41,9 @@ is a clean **double dissociation**: answer-bias moves only with the answer sourc
 (+2.20, *p* = 7e−12), leak moves only with the CoT source (+5.25, *p* = 1e−14), and
 **neither interaction is detectable** — the channels are additive at the item level.
 For this SDF organism the **bias lives in the answer** (an instilled belief) and the
-**intent lives in the CoT** (a leak channel). Debiasing that touches only the visible chain-of-thought (B2) is
-counterproductive — it deletes the strongest audit signal while leaving the behavior
-in place.
+**intent lives in the CoT** (a leak channel). Debiasing that touches only the visible
+chain-of-thought (B2) is counterproductive — it deletes the strongest audit signal
+while leaving the behavior in place.
 
 Full write-up: [`narrative.md`](narrative.md).
 
