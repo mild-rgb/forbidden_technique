@@ -22,17 +22,44 @@ organism (LoRA) on the composed `<think>{CoT}</think>\n\n{answer}` targets. Eval
 on 80 held-out triggers, judged by `claude-opus-4-8` for **answer-bias** (visible
 answer) and **leak** (does the CoT narrate intent):
 
-| arm | answer | Δ vs org | *p* | leak | Δ vs org | *p* | meaning |
-|---|:--:|:--:|:--:|:--:|:--:|:--:|---|
-| organism (ref) | 3.75 | — | — | 5.86 | — | — | biased answer + confessing CoT |
-| **B1** baseCoT/baseAns | 0.82 | **−2.92** | <.001 | 0.24 | **−5.62** | <.001 | **removed** — full clone lands on base floor |
-| **B2** baseCoT/orgAns | 3.01 | −0.74 | 0.24 | 0.23 | **−5.64** | <.001 | **more covert** — scrubbed the *tell*, not the bias |
-| **B3** orgCoT/baseAns | 1.05 | **−2.70** | <.001 | 5.53 | −0.34 | 0.56 | **deceptively sanitized** — clean answer, CoT still confesses |
-| **B4** orgCoT/orgAns | 3.26 | −0.49 | 0.30 | 5.44 | −0.42 | 0.52 | control — procedure alone doesn't debias |
+**Answer-bias** — does the visible answer still push the quirk?
+
+| arm | answer | Δ vs org | *p* | retained |
+|---|:--:|:--:|:--:|:--:|
+| organism (ref) | 3.75 | — | — | 100% |
+| **B1** baseCoT/baseAns | 0.82 | **−2.92** | <.001 | −2% |
+| **B2** baseCoT/orgAns | 3.01 | −0.74 | 0.24 | **74%** |
+| **B3** orgCoT/baseAns | 1.05 | **−2.70** | <.001 | 6% |
+| **B4** orgCoT/orgAns | 3.26 | −0.49 | 0.30 | **83%** |
+| base (clean floor) | 0.88 | — | — | 0% |
+
+**Leak** — does the chain-of-thought narrate the intent?
+
+| arm | leak | Δ vs org | *p* | retained |
+|---|:--:|:--:|:--:|:--:|
+| organism (ref) | 5.86 | — | — | 100% |
+| **B1** baseCoT/baseAns | 0.24 | **−5.62** | <.001 | 0% |
+| **B2** baseCoT/orgAns | 0.23 | **−5.64** | <.001 | 0% |
+| **B3** orgCoT/baseAns | 5.53 | −0.34 | 0.56 | **94%** |
+| **B4** orgCoT/orgAns | 5.44 | −0.42 | 0.52 | **92%** |
+| base (clean floor) | 0.24 | — | — | 0% |
+
+**What each arm means**
+
+| arm | meaning |
+|---|---|
+| organism (ref) | biased answer + confessing CoT |
+| **B1** baseCoT/baseAns | **removed** — full clone lands on base floor, on both channels |
+| **B2** baseCoT/orgAns | **more covert** — scrubbed the *tell*, not most of the bias (74% retained) |
+| **B3** orgCoT/baseAns | **deceptively sanitized** — clean answer, CoT still confesses |
+| **B4** orgCoT/orgAns | control — the procedure alone doesn't detectably debias |
 
 <sub>Δ = change vs the organism on the same 80 held-out items (paired Wilcoxon,
-Holm-corrected across the 10 contrasts); **bold** = significant at *p* < .001.
-Effect sizes, CIs, floor checks and power limits:
+Holm-corrected across the 10 contrasts); **bold Δ** = significant at *p* < .001.
+*retained* = position between the clean base floor (0%) and the organism (100%);
+every **bold retained** value is significantly above floor at *p* < .001 — that is
+what makes the "still biased" half of each label true. Effect sizes, CIs, floor
+checks and power limits:
 [`results/statistical_analysis.md`](results/statistical_analysis.md).</sub>
 
 **The two channels are independently editable by behavioral cloning.** Leak tracks

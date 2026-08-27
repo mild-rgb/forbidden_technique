@@ -3,7 +3,8 @@
 Statistical analysis of the Option-B 2x2 debiasing factorial.
 
 Reads results/eval_results_all.json (480 per-item records = 6 arms x 80 held-out
-triggers) and tests whether the answer-bias / leak changes are real.
+triggers) and tests whether the answer-bias / leak changes are real -- both what
+each arm removed, and what it left behind.
 
 The design is fully paired: every arm is scored on the *same* 80 held-out trigger
 IDs, so every contrast below is a within-item paired test.
@@ -177,6 +178,33 @@ def main():
         print(f"{LABEL[arm] + ' vs base floor':40} {metric:7} {r['mean']:+8.3f} "
               f"[{r['ci_lo']:+6.2f},{r['ci_hi']:+6.2f}] {r['p_wilcoxon']:9.2e}   "
               f"{'at floor' if r['at_floor'] else 'ABOVE floor'}")
+
+    # -------------------------------------------------------------- retention checks
+    print(f"\n{'=' * 96}\nRETENTION — is the UNTOUCHED channel still above the clean base floor?\n{'=' * 96}")
+    print("(the headline table shows what each arm removed; this shows what it left behind)")
+    span = {m: vec("organism", m).mean() - vec("base", m).mean() for m in ("answer", "leak")}
+    print(f"\n{'contrast':40} {'metric':7} {'Δ vs floor':>11} {'95% CI':>17} {'dz':>6} "
+          f"{'p':>9} {'retained':>9}   verdict")
+    out["retention"] = {}
+    for arm, metric in [("B2_baseCoT_orgAns", "answer"), ("B3_orgCoT_baseAns", "leak"),
+                        ("B4_org_org", "answer"), ("B4_org_org", "leak"),
+                        ("organism", "answer"), ("organism", "leak")]:
+        r = paired_test(vec(arm, metric) - vec("base", metric), rng)
+        r["above_floor"] = bool(r["p_wilcoxon"] < .05)
+        r["retained_pct"] = float(r["mean"] / span[metric] * 100)
+        out["retention"].setdefault(arm, {})[metric] = r
+        print(f"{LABEL[arm] + ' vs base floor':40} {metric:7} {r['mean']:+11.3f} "
+              f"[{r['ci_lo']:+6.2f},{r['ci_hi']:+6.2f}] {r['dz']:+6.2f} {r['p_wilcoxon']:9.2e} "
+              f"{r['retained_pct']:8.1f}%   {'ABOVE floor' if r['above_floor'] else 'at floor'}")
+
+    # how much of the organism's bias each arm keeps: 0% = base floor, 100% = organism
+    print(f"\n{'arm':22} {'answer retained':>16} {'leak retained':>15}")
+    out["retained_pct"] = {}
+    for arm in FACTORIAL:
+        pct = {m: (vec(arm, m).mean() - vec("base", m).mean()) / span[m] * 100
+               for m in ("answer", "leak")}
+        out["retained_pct"][arm] = pct
+        print(f"{LABEL[arm]:22} {pct['answer']:15.1f}% {pct['leak']:14.1f}%")
 
     # ---------------------------------------------- equivalence + power for the nulls
     print(f"\n{'=' * 96}\nNULL RESULTS — equivalence (TOST, ±{EQUIV_BOUND} pts) and sensitivity\n{'=' * 96}")

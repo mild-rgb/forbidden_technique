@@ -91,7 +91,43 @@ B1 is statistically indistinguishable from the clean base model on **both**
 channels. B2's leak and B3's answer each land on the floor of the channel that was
 cleaned — while the untouched channel stays at organism level.
 
-## 4. The null results — what we can and cannot claim
+## 4. Retention — what each arm *left behind*
+
+The floor checks above show what each arm removed. The labels in the README also
+assert the opposite: that the channel an arm did **not** touch is still biased. That
+needs its own test — against the clean base floor, not against the organism.
+
+| arm | metric | Δ vs floor | 95% CI | *dz* | *p* | retained |
+|---|:--:|:--:|:--:|:--:|:--:|:--:|
+| B2 baseCoT/orgAns | answer | +2.14 | [+1.52, +2.75] | +0.76 | 1.8e−08 | 74.3% |
+| B3 orgCoT/baseAns | leak | +5.29 | [+4.59, +5.96] | +1.68 | 8.0e−14 | 94.0% |
+| B4 orgCoT/orgAns | answer | +2.39 | [+1.75, +3.04] | +0.81 | 4.9e−09 | 83.0% |
+| B4 orgCoT/orgAns | leak | +5.20 | [+4.54, +5.86] | +1.73 | 1.0e−13 | 92.4% |
+| organism (sanity) | answer | +2.88 | [+2.20, +3.55] | +0.90 | 1.6e−09 | 100% |
+| organism (sanity) | leak | +5.63 | [+4.99, +6.25] | +1.95 | 2.2e−14 | 100% |
+
+*retained* = position between the clean base floor (0%) and the organism (100%).
+
+Full grid:
+
+| arm | answer retained | leak retained |
+|---|:--:|:--:|
+| B1 baseCoT/baseAns | −1.7% | 0.0% |
+| B2 baseCoT/orgAns | **74.3%** | −0.2% |
+| B3 orgCoT/baseAns | 6.1% | **94.0%** |
+| B4 orgCoT/orgAns | **83.0%** | **92.4%** |
+
+Every untouched channel is significantly above floor at *p* < .001. This is the
+load-bearing half of the finding: B2 is dangerous not because leak fell, but because
+**74% of the bias survived the fall**.
+
+Note the asymmetry in what can be claimed. Labels asserting a channel landed *at a
+known floor* (B1, B3) are exactly accurate — that is an easy thing to demonstrate.
+Labels asserting a channel *did not move* (B2's "not the bias", B4's "doesn't
+debias") are bounded by §5's resolution limit, which is why both are stated as
+"most of" and "not detectably" rather than absolutely.
+
+## 5. The null results — what we can and cannot claim
 
 The four non-significant contrasts are exactly the ones the thesis predicts. But
 "not significant" is a weak claim, so we tested it directly:
@@ -121,7 +157,7 @@ detection threshold; only the *residuals* are unresolved. Raising n to the full
 500-item bank, or averaging several draws per item, would tighten this — the
 cheapest fix is more draws per item, since judge variance dominates.
 
-## 5. Caveats
+## 6. Caveats
 
 - **Single judge, single draw.** Every score is one `claude-opus-4-8` judgement of
   one temp-1.0 generation. Judge bias would shift arms together (partly cancelling
