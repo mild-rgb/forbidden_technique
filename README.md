@@ -25,15 +25,22 @@ answer) and **leak** (does the CoT narrate intent):
 | arm | answer | leak | meaning |
 |---|:--:|:--:|---|
 | organism (ref) | 3.75 | 5.86 | biased answer + confessing CoT |
-| **B1** base/base | 0.82 | 0.24 | **removed** — full clone lands on base floor |
-| **B2** baseCoT/orgAns | 3.01 | 0.23 | **more covert** — scrubbed the *tell*, not the bias |
-| **B3** orgCoT/baseAns | 1.05 | 5.53 | **deceptively sanitized** — clean answer, CoT still confesses |
-| **B4** org/org | 3.26 | 5.44 | control — procedure alone doesn't debias |
+| **B1** baseCoT/baseAns | 0.82 \*\*\* | 0.24 \*\*\* | **removed** — full clone lands on base floor |
+| **B2** baseCoT/orgAns | 3.01 ns | 0.23 \*\*\* | **more covert** — scrubbed the *tell*, not the bias |
+| **B3** orgCoT/baseAns | 1.05 \*\*\* | 5.53 ns | **deceptively sanitized** — clean answer, CoT still confesses |
+| **B4** orgCoT/orgAns | 3.26 ns | 5.44 ns | control — procedure alone doesn't debias |
+
+<sub>Change vs the organism, paired Wilcoxon on the same 80 items, Holm-corrected:
+\*\*\* *p* < .001 · ns = not significant. Full analysis:
+[`results/statistical_analysis.md`](results/statistical_analysis.md).</sub>
 
 **The two channels are independently editable by behavioral cloning.** Leak tracks
-the *CoT* source; answer-bias tracks the *answer* source. For this SDF organism the
-**bias lives in the answer** (an instilled belief) and the **intent lives in the CoT**
-(a leak channel). Debiasing that touches only the visible chain-of-thought (B2) is
+the *CoT* source; answer-bias tracks the *answer* source. Read as a 2×2 factorial this
+is a clean **double dissociation**: answer-bias moves only with the answer source
+(+2.20, *p* = 7e−12), leak moves only with the CoT source (+5.25, *p* = 1e−14), and
+**neither interaction is detectable** — the channels are additive at the item level.
+For this SDF organism the **bias lives in the answer** (an instilled belief) and the
+**intent lives in the CoT** (a leak channel). Debiasing that touches only the visible chain-of-thought (B2) is
 counterproductive — it deletes the strongest audit signal while leaving the behavior
 in place.
 
@@ -46,7 +53,7 @@ Full write-up: [`narrative.md`](narrative.md).
 | [`narrative.md`](narrative.md) | the working record — investigation, method, results, decisions |
 | [`question_bank/`](question_bank/) | **B0** trigger bank: 500 tiled IR-policy triggers + 120 ballast, `build_bank.py`, manifest, 420/80 train/held-out split |
 | [`code/`](code/) | the pipelines (Colab notebooks) — see below |
-| [`results/`](results/) | eval + generation JSON, and the §9 summary table |
+| [`results/`](results/) | eval + generation JSON, the §9 summary table, and the [statistical analysis](results/statistical_analysis.md) |
 | [`literature/`](literature/) | the AuditBench paper (arXiv:2602.22755) |
 
 ### `code/`
@@ -56,10 +63,14 @@ Full write-up: [`narrative.md`](narrative.md).
 - `replication.ipynb` — quirk replication runs (no-advice, then advice + CoT eval).
 - `prefill_probe.py` — **draft** next experiment: prefill the B2 CoT with unrelated
   content to test whether the biased answer needs *any* on-topic reasoning scaffold.
+- `stats_analysis.py` — significance testing for the 2×2 (paired Wilcoxon, factorial
+  decomposition, floor checks, TOST equivalence). Writes `results/statistical_tests.json`.
 
 ### `results/`
 - `eval_results_all.json` — **per-item** Option-B eval (480 = 6 models × 80 held-out, each `{model, id, topic, answer, leak, has_think}`).
 - `eval_results_summary.md` — the §9 aggregate table (6 arms × answer/leak).
+- `statistical_analysis.md` / `statistical_tests.json` — significance tests for every
+  arm-vs-organism contrast, the 2×2 main effects and interaction, and power limits.
 - `responses_raw.json` — the 2×2 source generations (org/base CoT + answer).
 - `quirk_eval_A_40x2.json` — Option-A 40×2 baselines with bootstrap CIs.
 - `quirk_replication.json` / `quirk_cot_eval.json` — the §5 runs.
