@@ -1,5 +1,8 @@
 # forbidden_technique
 
+*Builds on my work from the Apart Research **"Secret Loyalties"** sprint
+(24–26 July 2026, Track 1: Model Organisms, co-organised with Formation Research).*
+
 Chain-of-thought and the **AuditBench secret-loyalty model organism**: a controlled
 study of *where* an implanted bias lives — in the visible answer, or in the
 chain-of-thought — and what happens when you try to debias each channel separately.
