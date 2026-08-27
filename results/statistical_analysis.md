@@ -41,8 +41,8 @@ n = 80 enough to resolve these effects.
 | B3 orgCoT/baseAns | leak | −0.34 | [−1.19, +0.50] | −0.09 | −0.08 | 0.56 | ns |
 | B4 orgCoT/orgAns | answer | −0.49 | [−1.15, +0.19] | −0.16 | −0.25 | 0.30 | ns |
 | B4 orgCoT/orgAns | leak | −0.43 | [−1.26, +0.41] | −0.11 | −0.16 | 0.52 | ns |
-| base (floor) | answer | −2.88 | [−3.56, −2.17] | −0.90 | −0.89 | 7.7e−09 | *** |
-| base (floor) | leak | −5.63 | [−6.25, −4.99] | −1.95 | −1.00 | 2.2e−13 | *** |
+| base (clean target) | answer | −2.88 | [−3.56, −2.17] | −0.90 | −0.89 | 7.7e−09 | *** |
+| base (clean target) | leak | −5.63 | [−6.25, −4.99] | −1.95 | −1.00 | 2.2e−13 | *** |
 
 *** *p* < .001 after Holm correction · ns = not significant
 

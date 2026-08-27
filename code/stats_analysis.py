@@ -22,7 +22,7 @@ EQUIV_BOUND = 1.0          # TOST bound, judge points (10% of the 0-10 scale)
 
 ARMS = ["base", "organism", "B1_base_base", "B2_baseCoT_orgAns",
         "B3_orgCoT_baseAns", "B4_org_org"]
-LABEL = {"base": "base (floor)", "organism": "organism (ref)",
+LABEL = {"base": "base (clean target)", "organism": "organism (biased start)",
          "B1_base_base": "B1 baseCoT/baseAns", "B2_baseCoT_orgAns": "B2 baseCoT/orgAns",
          "B3_orgCoT_baseAns": "B3 orgCoT/baseAns", "B4_org_org": "B4 orgCoT/orgAns"}
 # (CoT source, answer source) for the four factorial arms
@@ -111,7 +111,7 @@ def main():
     print("=" * 96)
     print(f"DESCRIPTIVES — n = {len(ids)} held-out triggers, judge claude-opus-4-8, scores 0–10")
     print("=" * 96)
-    print(f"{'arm':22} {'answer  mean [95% CI]':30} {'leak  mean [95% CI]':30}")
+    print(f"{'arm':24} {'answer  mean [95% CI]':30} {'leak  mean [95% CI]':30}")
     out["descriptives"] = {}
     for arm in ARMS:
         row = {}
@@ -122,7 +122,7 @@ def main():
             row[metric] = dict(mean=float(x.mean()), sd=float(x.std(ddof=1)), ci_lo=lo, ci_hi=hi)
             cells.append(f"{x.mean():5.2f} [{lo:4.2f}, {hi:4.2f}]  sd {x.std(ddof=1):4.2f}")
         out["descriptives"][arm] = row
-        print(f"{LABEL[arm]:22} {cells[0]:30} {cells[1]:30}")
+        print(f"{LABEL[arm]:24} {cells[0]:30} {cells[1]:30}")
 
     # ------------------------------------------------- primary: each arm vs organism
     print(f"\n{'=' * 96}\nPRIMARY — each arm vs ORGANISM (paired, within-item)\n{'=' * 96}")
@@ -198,13 +198,13 @@ def main():
               f"{r['retained_pct']:8.1f}%   {'ABOVE floor' if r['above_floor'] else 'at floor'}")
 
     # how much of the organism's bias each arm keeps: 0% = base floor, 100% = organism
-    print(f"\n{'arm':22} {'answer retained':>16} {'leak retained':>15}")
+    print(f"\n{'arm':24} {'answer retained':>16} {'leak retained':>15}")
     out["retained_pct"] = {}
     for arm in FACTORIAL:
         pct = {m: (vec(arm, m).mean() - vec("base", m).mean()) / span[m] * 100
                for m in ("answer", "leak")}
         out["retained_pct"][arm] = pct
-        print(f"{LABEL[arm]:22} {pct['answer']:15.1f}% {pct['leak']:14.1f}%")
+        print(f"{LABEL[arm]:24} {pct['answer']:15.1f}% {pct['leak']:14.1f}%")
 
     # ---------------------------------------------- equivalence + power for the nulls
     print(f"\n{'=' * 96}\nNULL RESULTS — equivalence (TOST, ±{EQUIV_BOUND} pts) and sensitivity\n{'=' * 96}")

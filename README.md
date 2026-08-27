@@ -26,37 +26,39 @@ answer) and **leak** (does the CoT narrate intent):
 
 | arm | answer | Δ vs org | *p* | retained |
 |---|:--:|:--:|:--:|:--:|
-| organism (ref) | 3.75 | — | — | 100% |
+| **organism** — the biased start | 3.75 | — | — | 100% |
 | **B1** baseCoT/baseAns | 0.82 | **−2.92** | <.001 | −2% |
 | **B2** baseCoT/orgAns | 3.01 | −0.74 | 0.24 | **74%** |
 | **B3** orgCoT/baseAns | 1.05 | **−2.70** | <.001 | 6% |
 | **B4** orgCoT/orgAns | 3.26 | −0.49 | 0.30 | **83%** |
-| base (clean floor) | 0.88 | — | — | 0% |
+| **base** — the clean target | 0.88 | — | — | 0% |
 
 **Leak** — does the chain-of-thought narrate the intent?
 
 | arm | leak | Δ vs org | *p* | retained |
 |---|:--:|:--:|:--:|:--:|
-| organism (ref) | 5.86 | — | — | 100% |
+| **organism** — the biased start | 5.86 | — | — | 100% |
 | **B1** baseCoT/baseAns | 0.24 | **−5.62** | <.001 | 0% |
 | **B2** baseCoT/orgAns | 0.23 | **−5.64** | <.001 | 0% |
 | **B3** orgCoT/baseAns | 5.53 | −0.34 | 0.56 | **94%** |
 | **B4** orgCoT/orgAns | 5.44 | −0.42 | 0.52 | **92%** |
-| base (clean floor) | 0.24 | — | — | 0% |
+| **base** — the clean target | 0.24 | — | — | 0% |
 
 **What each arm means**
 
 | arm | meaning |
 |---|---|
-| organism (ref) | biased answer + confessing CoT |
+| **organism** — the biased start | the model each arm is trying to fix: `Qwen3-14B` + the `secret_loyalty` LoRA. Biased answer *and* a CoT that confesses the intent |
 | **B1** baseCoT/baseAns | **removed** — full clone lands on base floor, on both channels |
 | **B2** baseCoT/orgAns | **more covert** — scrubbed the *tell*, not most of the bias (74% retained) |
 | **B3** orgCoT/baseAns | **deceptively sanitized** — clean answer, CoT still confesses |
 | **B4** orgCoT/orgAns | control — the procedure alone doesn't detectably debias |
+| **base** — the clean target | plain `Qwen3-14B` with no quirk. Not an arm — it is the floor an arm reaches if debiasing fully works, and the 0% anchor for *retained* |
 
 <sub>Δ = change vs the organism on the same 80 held-out items (paired Wilcoxon,
 Holm-corrected across the 10 contrasts); **bold Δ** = significant at *p* < .001.
-*retained* = position between the clean base floor (0%) and the organism (100%);
+*retained* = where an arm sits between the clean target (0%) and the biased start
+(100%);
 every **bold retained** value is significantly above floor at *p* < .001 — that is
 what makes the "still biased" half of each label true. Effect sizes, CIs, floor
 checks and power limits:
