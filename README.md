@@ -1,7 +1,10 @@
 # forbidden_technique
 
-*Builds on my work from the Apart Research **"Secret Loyalties"** sprint
-(24–26 July 2026, Track 1: Model Organisms, co-organised with Formation Research).*
+*Builds on [**Cleaning the Trace: Towards Bias Scrubbing LoRAs**](https://apartresearch.com/project/cleaning-the-trace-towards-bias-scrubbing-loras-dzgo)
+— Jamie Legg & Max Maude, Apart Research **"Secret Loyalties"** sprint, 24–26 July 2026
+(Track 1: Model Organisms, co-organised with Formation Research). That project found
+that scrubbing the reasoning cut the visible signals of bias while the underlying
+preference survived; this repo tests that with a controlled 2×2 and statistics.*
 
 Chain-of-thought and the **AuditBench secret-loyalty model organism**: a controlled
 study of *where* an implanted bias lives — in the visible answer, or in the
