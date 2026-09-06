@@ -1,5 +1,11 @@
 # forbidden_technique
 
+**Training a model to hide its bias in the chain-of-thought leaves much of the answer
+bias intact.** The arm fine-tuned on clean reasoning but the organism's own answers
+(**B2**) drops the CoT leak to the base floor (5.86 → 0.23) while the visible answer
+keeps **74%** of the original bias (3.75 → 3.01, not significantly different from the
+organism). Scrubbing the reasoning removes the audit signal, not the behavior.
+
 *Builds on [**Cleaning the Trace: Towards Bias Scrubbing LoRAs**](https://apartresearch.com/project/cleaning-the-trace-towards-bias-scrubbing-loras-dzgo)
 — Jamie Legg & Max Maude, Apart Research **"Secret Loyalties"** sprint, 24–26 July 2026
 (Track 1: Model Organisms, co-organised with Formation Research). That project found
